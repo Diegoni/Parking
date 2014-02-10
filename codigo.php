@@ -1,4 +1,9 @@
-<? include_once("menu.php");
+<? 
+session_start();
+	if($_SESSION['id_tipousuario']!=1){
+	header("Location: index.php");
+	}
+include_once("menu.php");
 $query="SELECT * FROM `tipo`";   
 $tipo=mysql_query($query) or die(mysql_error());
 $row_tipo = mysql_fetch_assoc($tipo);

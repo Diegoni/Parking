@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <? include_once("menu.php");
+	if($_SESSION['id_tipousuario']!=1){
+	header("Location: index.php");
+	}
 if(isset($_GET['eliminar'])){
 $query="SELECT * FROM `estadia` WHERE id_tarjeta='$_GET[eliminar]' and id_estado=1";   
 $estadia=mysql_query($query) or die(mysql_error());

@@ -29,11 +29,12 @@ body {
 }
 
 #logo {
+	background: url(../imagenes/logo.png) no-repeat left;
+	background-size:75px 75px;
 	position: absolute;
 	top:-5px;
 	left:-50px;
 	height:84px;
-	background: url(img/header/logo.jpg) no-repeat left;
 	font-size: 2.8em;
 	color:#fff;
 	text-decoration: none;
@@ -59,7 +60,7 @@ body {
 #navigation {
 	position: absolute;
 	top:24px;
-	right:0;
+	right:-150px;
 }
 
 #content {
@@ -1702,5 +1703,6 @@ div.sharedaddy .sd-content ul {
 	padding:30px;
 	border-radius:25px;
 	box-shadow: 10px 10px 5px #888888;
+	width: 250px;
 
 }

@@ -52,7 +52,8 @@
 ================================================== */
 	body {
 		background: #fff;
-		font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		/*font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+		font-family: "Trebuchet MS",Verdana,Geneva,Arial,Helvetica,sans-serif;
 		color: #444;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 		-webkit-text-size-adjust: 100%;
@@ -94,10 +95,10 @@
 
 /* #Links
 ================================================== */
-	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
+/*	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
 	a:hover, a:focus { color: #000; }
 	p a, p a:visited { line-height: inherit; }
-
+*/
 
 /* #Lists
 ================================================== */
@@ -263,10 +264,71 @@ table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: so
 table.tftable tr:hover{background-color:#FFF;}
 
 
-table.tftablechica {font-size:12px;color:#333333;width:25%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
-table.tftablechica th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
-table.tftablechica tr {background-color:#d4e3e5;}
-table.tftablechica td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+table.tftablechica {	font-size:12px;
+					color:#333333;
+					width:25%;
+					border-width: 1px;
+					border-color: #729ea5;
+					border-collapse: collapse;}
+table.tftablechica th {	font-size:12px;
+					background-color:#acc8cc;
+					border-width: 1px;
+					padding: 4px;
+					border-style: solid;
+					border-color: #729ea5;
+					text-align:left;}
+table.tftablechica tr {	background-color:#d4e3e5;}
+table.tftablechica td {	font-size:12px;
+					border-width: 1px;
+					padding: 4px;
+					border-style: solid;
+					border-color: #729ea5;}
 table.tftablechica tr:hover{background-color:#FFF;}
 
 
+.button_rojo{
+border:1px solid #df0909; 
+-webkit-border-radius: 3px; 
+-moz-border-radius: 3px;
+border-radius: 3px;
+font-size:12px;
+font-family:arial, helvetica, sans-serif; 
+padding: 5px 5px 5px 5px; 
+text-decoration:none; 
+display:inline-block;
+text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+font-weight:bold; 
+color: #FFFFFF;
+ background-color: #f62b2b; 
+ background-image: -webkit-gradient(linear, left top, left bottom, from(#f62b2b), to(#d20202));
+ background-image: -webkit-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -moz-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -ms-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -o-linear-gradient(top, #f62b2b, #d20202);
+ background-image: linear-gradient(to bottom, #f62b2b, #d20202);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f62b2b, endColorstr=#d20202);
+}
+
+.button_rojo:hover{
+ border:1px solid #b30808;
+ color: #FFFFFF;
+ background-color: #e40a0a; 
+ background-image: -webkit-gradient(linear, left top, left bottom, from(#e40a0a), to(#9f0202));
+ background-image: -webkit-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -moz-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -ms-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -o-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: linear-gradient(to bottom, #e40a0a, #9f0202);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e40a0a, endColorstr=#9f0202);
+}
+.ptablatexto{
+	font-size: 24px;
+}
+.ptabladato{
+	font-size: 30px;
+}
+.ptablatotal{
+	font-size: 30px;
+	color:#bc1139;
+	font-weight: bold;
+}

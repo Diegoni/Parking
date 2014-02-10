@@ -1,6 +1,8 @@
-﻿<? 
-//configuracion de base de datos
+﻿<?
+if(!isset($_SESSION)){
+}
 include_once("config/database.php");
+date_default_timezone_set('America/Argentina/Mendoza'); 
 ?>
 <html>
 <head>
@@ -26,6 +28,11 @@ include_once("config/database.php");
 <script>
   $(function() {
     $( "#datepicker" ).datepicker();
+	$( '#datepicker' ).datepicker('option', {dateFormat: 'dd/mm/yy'});
+  });
+  $(function() {
+    $( "#datepicker2" ).datepicker();
+	$( '#datepicker2' ).datepicker('option', {dateFormat: 'dd/mm/yy'});
   });
 </script>
 
@@ -70,5 +77,6 @@ window.close()
 	}
 };
 </script>
+
 </head>
 <center>

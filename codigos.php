@@ -1,4 +1,9 @@
-<? include_once("menu.php");
+<? 
+session_start();
+	if($_SESSION['id_tipousuario']!=1){
+	header("Location: index.php");
+	}
+include_once("menu.php");
 if(isset($_GET['eliminar'])){
 $query="SELECT * FROM `estadia` WHERE id_tarjeta='$_GET[eliminar]' and id_estado=1";   
 $estadia=mysql_query($query) or die(mysql_error());
@@ -18,7 +23,7 @@ $query="SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo)
 $tarjeta=mysql_query($query) or die(mysql_error());
 $row_tarjeta = mysql_fetch_assoc($tarjeta);
 }else{
-$query="SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo)WHERE tarjeta.id_estado=1 ORDER BY tarjeta.codigo";   
+$query="SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo)WHERE tarjeta.id_estado=1 ORDER BY tarjeta.codigo LIMIT 0,20";   
 $tarjeta=mysql_query($query) or die(mysql_error());
 $row_tarjeta = mysql_fetch_assoc($tarjeta);
 }
@@ -26,9 +31,9 @@ $row_tarjeta = mysql_fetch_assoc($tarjeta);
 	<table id="tfhover" class="tftable">
 	<tr>
 	<form action="codigos.php">
-	<td><input name="codigo" type="text"</td>
+	<td><input name="codigo" type="text" placeholder="ingrese codigo" required></td>
 	<td><button type="submit">buscar</button></td>
-	<td></td>
+	<td><a href="codigo.php" class="button">Nuevo<a></td>
 	</form>
 	</tr>
 	<tr>
@@ -41,7 +46,7 @@ $row_tarjeta = mysql_fetch_assoc($tarjeta);
 	<tr>
 	<td><?echo $row_tarjeta['codigo'];?></td>
 	<td><?echo $row_tarjeta['tipo'];?></td>
-	<td><a class="button" href="codigos.php?eliminar=<? echo $row_tarjeta['id_tarjeta']?>">x</a></td>
+	<td><a class="button_rojo" href="codigos.php?eliminar=<? echo $row_tarjeta['id_tarjeta']?>">x</a></td>
 	</tr>
 	<? }while ($row_tarjeta = mysql_fetch_array($tarjeta));?>
 	</tr>
