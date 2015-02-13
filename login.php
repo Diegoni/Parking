@@ -1,4 +1,4 @@
-<? include_once("head.php");
+<?php include_once("head.php");
 
 
 $loginFormAction = $_SERVER['PHP_SELF'];

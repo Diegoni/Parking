@@ -40,7 +40,7 @@
         } 
     }else { 
 ?> 
-    <form action="<?=$_SERVER['PHP_SELF']?>" method="post"> 
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post"> 
         <label>Usuario:</label><br /> 
         <input type="text" name="usuario_nombre" maxlength="15" /><br /> 
         <label>Contraseña:</label><br /> 

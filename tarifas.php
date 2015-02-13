@@ -25,9 +25,7 @@
 	
 	
 	}while ($row_tarifa2 = mysql_fetch_array($tarifa2));
-	?>
 
-	<?
 	}
 	
 	$query="SELECT * FROM `tarifa` INNER JOIN `tipo` on(tarifa.id_tipo=tipo.id_tipo) WHERE tarifa.id_estado=1 ORDER BY tipo.tipo";   
@@ -51,17 +49,17 @@
 	<td>$ Valor</td>
 </tr>
 <form action="tarifas.php" name="tarifas">
-<?do {?>
+<?php do {?>
 <tr>
-	<td><?echo $row_tarifa['tipo']?></td>
-	<td><input size="5" type="text" name="inicial_min<?echo $row_tarifa['id_tarifa']?>" value="<?echo $row_tarifa['inicial_min']?>"></td>
-	<td><input size="5" type="text" name="valor_inicial<?echo $row_tarifa['id_tarifa']?>" value="<?echo $row_tarifa['valor_inicial']?>"></td>
-	<td><input size="5" type="text" name="extra_min<?echo $row_tarifa['id_tarifa']?>" value="<?echo $row_tarifa['extra_min']?>"></td>
-	<td><input size="5" type="text" name="tolerancia_min<?echo $row_tarifa['id_tarifa']?>" value="<?echo $row_tarifa['tolerancia_min']?>"></td>
-	<td><input size="5" type="text" name="valor_extra<?echo $row_tarifa['id_tarifa']?>" value="<?echo $row_tarifa['valor_extra']?>"></td>
-		<input type="hidden" name="id_tarifa" value="<?echo $row_tarifa['id_tarifa']?>">
+	<td><?php echo $row_tarifa['tipo']?></td>
+	<td><input size="5" type="text" name="inicial_min<?php echo $row_tarifa['id_tarifa']?>" value="<?php echo $row_tarifa['inicial_min']?>"></td>
+	<td><input size="5" type="text" name="valor_inicial<?php echo $row_tarifa['id_tarifa']?>" value="<?php echo $row_tarifa['valor_inicial']?>"></td>
+	<td><input size="5" type="text" name="extra_min<?php echo $row_tarifa['id_tarifa']?>" value="<?php echo $row_tarifa['extra_min']?>"></td>
+	<td><input size="5" type="text" name="tolerancia_min<?php echo $row_tarifa['id_tarifa']?>" value="<?php echo $row_tarifa['tolerancia_min']?>"></td>
+	<td><input size="5" type="text" name="valor_extra<?php echo $row_tarifa['id_tarifa']?>" value="<?php echo $row_tarifa['valor_extra']?>"></td>
+		<input type="hidden" name="id_tarifa" value="<?php echo $row_tarifa['id_tarifa']?>">
 </tr>
-<? }while ($row_tarifa = mysql_fetch_array($tarifa)) ?>
+<?php }while ($row_tarifa = mysql_fetch_array($tarifa)) ?>
 <tr>
 	<td align="center" colspan="6"><button type="submit" value="1" name="guardar">Guardar cambios</button></td>
 </tr>

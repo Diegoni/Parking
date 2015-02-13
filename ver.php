@@ -77,7 +77,7 @@ $total=$total+$row_estadia['monto'];
 <TD  bgcolor=”#000000″><span style=”color:#FFFFFF; font-weight:bold;”>&nbsp;-&nbsp;</span></TD>
 <TD  bgcolor=”#000000″><span style=”color:#FFFFFF; font-weight:bold;”>&nbsp;-&nbsp;</span></TD>
 <TD  bgcolor=”#000000″><span style=”color:#FFFFFF; font-weight:bold;”>&nbsp;Total&nbsp;</span></TD>
-<TD  bgcolor=”#000000″><span style=”color:#FFFFFF; font-weight:bold;”>&nbsp;<?echo $total;?>&nbsp;</span></TD>
+<TD  bgcolor=”#000000″><span style=”color:#FFFFFF; font-weight:bold;”>&nbsp;<?php echo $total;?>&nbsp;</span></TD>
 </table>
 </body>
 </html>
