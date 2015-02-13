@@ -1,6 +1,6 @@
-<?
+<?php
 	$username="root";
-	$password="";
+	$password="bluepill";
 	$database="estacionamiento";
 	$url="localhost";
 	mysql_connect($url,$username,$password);

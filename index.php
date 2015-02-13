@@ -151,71 +151,72 @@ document.estadia.tarjeta.focus();
 </form>
 
 
-<? 
+<?php 
 if(isset($_GET['tarjeta'])){
 if($numero_estadias==0){ ?>
 <table id="tfhover" class="tftable">
 <tr>
 	<th><div class="ptablatexto">Hora ingreso</div></th>
-	<td><div class="ptabladato"><? echo date("H:i:s", strtotime( $entrada ));?></div></td>
 	<th><div class="ptablatexto">Hora salida</div></th>
 	<td><div class="ptabladato"> - </div></td>
 </tr>
 <tr>
 	<th><div class="ptablatexto">Tarjeta</div></th>
-	<td><div class="ptabladato"><? echo $row_tarjeta['codigo'];?></div></td>
+	<td><div class="ptabladato"><?php echo $row_tarjeta['codigo'];?></div></td>
 	<th><div class="ptablatexto">Estado</div></th>
 	<td><div class="ptabladato">Abierta</div></td>
 </tr>
 <tr>
 	<th><div class="ptablatexto">Tipo</div></th>
-	<td><div class="ptabladato"><? echo $row_tarjeta['tipo'];?></div></td>
+	<td><div class="ptabladato"><?php echo $row_tarjeta['tipo'];?></div></td>
 	<th><div class="ptablatexto">Valor</div></th>
 	<td><div class="ptablatotal"> - </div></td>
 </tr>
 </table>
-<? }else{ ?>
+<?php }else{ ?>
 <table>
 <table id="tfhover" class="tftable">
 <tr>
 	<th><div class="ptablatexto">Hora ingreso</div></th>
-	<td><div class="ptabladato"><? echo date("H:i:s", strtotime( $entrada)) ;?></div></td>
+	<td><div class="ptabladato"><?php echo date("H:i:s", strtotime( $entrada)) ;?></div></td>
 	<th><div class="ptablatexto">Hora salida</div></th>
-	<td><div class="ptabladato"><? echo date("H:i:s", strtotime( $salida)) ;?></div></td>
+	<td><div class="ptabladato"><?php echo date("H:i:s", strtotime( $salida)) ;?></div></td>
 </tr>
 <tr>
 	<th><div class="ptablatexto">Tarjeta</div></th>
-	<td><div class="ptabladato"><? echo $row_tarjeta['codigo'];?></div></td>
+	<td><div class="ptabladato"><?php echo $row_tarjeta['codigo'];?></div></td>
 	<th><div class="ptablatexto">Estado</div></th>
 	<td><div class="ptabladato">Cerrada</div></td>
 </tr>
 <tr>
 	<th><div class="ptablatexto">Tipo</div></th>
-	<td><div class="ptabladato"><? echo $row_tarjeta['tipo'];?></div></td>
+	<td><div class="ptabladato"><?php echo $row_tarjeta['tipo'];?></div></td>
 	<th><div class="ptablatexto">Valor</div></th>
-	<td><div class="ptablatotal"><? echo $monto;?></div></td>
+	<td><div class="ptablatotal"><?php echo $monto;?></div></td>
 </tr>
 </table>
-<? 
+<?php 
 	$horas=0;
 	$min=$minutos;
 	while ($min >= 60) {
 	$min=$min-60;
 	$horas=$horas+1;;
 	}?>
-<h1>Tiempo:	<?if($horas<10){
+<h1>Tiempo:	<?php 
+			if($horas<10){
 			echo "0".$horas	;
 			}else{
 			echo $horas ;
 			}
 			?>
 			:
-			<?if($min<10){
+			<?php
+			if($min<10){
 			echo "0".$min	;
 			}else{
 			echo $min ;
 			}?></h1>
-<? }
+<?php }
 }else{ ?>
 <table id="tfhover" class="tftable">
 <tr>
@@ -237,23 +238,23 @@ if($numero_estadias==0){ ?>
 	<td><div class="ptablatotal"> - </div></td>
 </tr>
 </table>
-<?}?>
+<?php }?>
 
 <br>
 
 
 Cantidad de entradas abiertas 
 <table id="tfhover" class="tftable">
-<? do{ ?>
+<?php do{ ?>
 <tr>	
-	<th><div class="ptablatexto"><a href="#" title="ver detalle" onClick="abrirVentana('verdetalle.php?tipo=<? echo $row_estadia['id_tipo'];?>')"><? echo $row_estadia['tipo'];?></a></div></th>
-	<td><div class="ptablatexto"><? echo $row_estadia['count'];?></div></td>
+	<th><div class="ptablatexto"><a href="#" title="ver detalle" onClick="abrirVentana('verdetalle.php?tipo=<?php echo $row_estadia['id_tipo'];?>')"><?php echo $row_estadia['tipo'];?></a></div></th>
+	<td><div class="ptablatexto"><?php echo $row_estadia['count'];?></div></td>
 	<?$numero_estadia=$numero_estadia+$row_estadia['count'];?>
 </tr>
-<? }while ($row_estadia = mysql_fetch_array($estadia));?>
+<?php }while ($row_estadia = mysql_fetch_array($estadia));?>
 <tr>	
 	<th><div class="ptablatexto">Total</div></th>
-	<td><div class="ptablatotal"><? echo $numero_estadia;?></div></td>
+	<td><div class="ptablatotal"><?php echo $numero_estadia;?></div></td>
 </tr>
 <tr>
 	<td>Hora actual</td>
@@ -263,7 +264,7 @@ Cantidad de entradas abiertas
 </tr>
 </table>	
 
-<?
+<?php
 //Esto es para crear el grafico de torta
 
 include "libchart/classes/libchart.php";

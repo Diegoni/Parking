@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<? include_once("menu.php");
+<?php include_once("menu.php");
 	if($_SESSION['id_tipousuario']!=1){
 	header("Location: index.php");
 	}
@@ -41,13 +41,13 @@ $row_tarjeta = mysql_fetch_assoc($tarjeta);
 	<td></td>
 	</tr>
 	<tr>
-	<?do{?>
+	<?php do{?>
 	<tr>
-	<td><?echo $row_tarjeta['codigo'];?></td>
-	<td><?echo $row_tarjeta['tipo'];?></td>
-	<td><a href="codigos.php?eliminar=<? echo $row_tarjeta['id_tarjeta']?>">x</a></td>
+	<td><?php echo $row_tarjeta['codigo'];?></td>
+	<td><?php echo $row_tarjeta['tipo'];?></td>
+	<td><a href="codigos.php?eliminar=<?php echo $row_tarjeta['id_tarjeta']?>">x</a></td>
 	</tr>
-	<? }while ($row_tarjeta = mysql_fetch_array($tarjeta));?>
+	<?php }while ($row_tarjeta = mysql_fetch_array($tarjeta));?>
 	</tr>
 	</table>
 	

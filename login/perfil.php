@@ -9,9 +9,9 @@
         $email = $row["usuario_email"]; 
         $freg = $row["usuario_freg"]; 
 ?> 
-        <strong>Nick:</strong> <?=$nick?><br /> 
-        <strong>Email:</strong> <?=$email?><br /> 
-        <strong>Registrado el:</strong> <?=$freg?><br /> 
+        <strong>Nick:</strong> <?php echo $nick?><br /> 
+        <strong>Email:</strong> <?php echo $email?><br /> 
+        <strong>Registrado el:</strong> <?php echo $freg?><br /> 
 <?php 
     }else { 
 ?> 

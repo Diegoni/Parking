@@ -8,7 +8,8 @@ function actualizaPadre(miColor){
 	window.opener.document.estadia.tarjeta.focus()
 	window.close()
 }
-</script><?
+</script>
+<?php
 				
 //selecciono todas las empresas 
 $query="SELECT * FROM `estadia` 
@@ -55,9 +56,10 @@ $total=0;
 	<th>Minutos</th>
 	<th>Valor</th>
 </tr>
-<?do{?>
+<?php
+do{?>
 <tr>
-	<td><?echo $row_estadia['usuario_nombre']?></td>
+	<td><?php echo $row_estadia['usuario_nombre']?></td>
 	<td><script language="javascript">
 			var nuevoc = <?php echo $row_estadia['codigo']; ?>
         
@@ -66,13 +68,13 @@ $total=0;
  
 		</script>
 	</td>
-	<td><?echo date("H:i:s", strtotime( $row_estadia['entrada']))?></td>
-	<td><?echo $row_estadia['tipo']?></td>
-			<?$salida=date("Y-m-d H:i:s");
+	<td><?php echo date("H:i:s", strtotime( $row_estadia['entrada']))?></td>
+	<td><?php echo $row_estadia['tipo']?></td>
+			<?php $salida=date("Y-m-d H:i:s");
 			$entrada=$row_estadia['entrada'];
 			$minutos=intervalo_tiempo($entrada,$salida);?>
-	<td><?echo $minutos?></td>
-			<?
+	<td><?php echo $minutos?></td>
+			<?php 
 			$query="SELECT * FROM `tarifa` WHERE id_tipo='$row_estadia[id_tipo]' AND id_estado=1";   
 			$tarifa=mysql_query($query) or die(mysql_error());
 			$row_tarifa = mysql_fetch_assoc($tarifa);
@@ -84,16 +86,16 @@ $total=0;
 				$extra=$periodos*$row_tarifa['valor_extra'];
 				$monto=$row_tarifa['valor_inicial']+$extra;
 			}?>
-	<td>$ <?echo $monto?></td>
-	<?$total=$total+$monto?>
+	<td>$ <?php echo $monto?></td>
+	<?php $total=$total+$monto?>
 	
 </tr>
-<? }while ($row_estadia = mysql_fetch_array($estadia));?>
+<?php }while ($row_estadia = mysql_fetch_array($estadia));?>
 
 
 <tr>
 	<th colspan="5"><strong>Total</strong></th>
-	<td>$ <?echo $total;?></td>
+	<td>$ <?php echo $total;?></td>
 </tr>
 <tr>
 	<form action="caja.php" name="caja">

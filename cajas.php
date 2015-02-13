@@ -1,4 +1,4 @@
-<? 
+<?php
 session_start();
 	if($_SESSION['id_tipousuario']!=1){
 	header("Location: index.php");
@@ -36,7 +36,7 @@ $numero_cajas = mysql_num_rows($caja);
 <th>Inicio</th>
 <th><input name="inicio" id="datepicker" type="text" placeholder="Seleccione una fecha" required></th>
 <th>Final</th>
-<th><input name="final" id="datepicker2" type="text" placeholder="Seleccione una fecha" value="<? echo date("m/d/Y")?>"></th>
+<th><input name="final" id="datepicker2" type="text" placeholder="Seleccione una fecha" value="<?php echo date("m/d/Y")?>"></th>
 <th><button type="submit" name="buscar" value="1">buscar</button></th>
 </form>
 
@@ -47,25 +47,25 @@ $numero_cajas = mysql_num_rows($caja);
 <th>Valor Real</th>
 <th>Cantidad de estadias</th>
 </tr>
-<?do{?>
+<?php do{?>
 <tr>
-<td><a href="#" class="button" style="padding: 5px 5px 5px 5px;"  title="guardar" onClick="abrirVentana('vercaja.php?caja=<?echo $row_caja['id_caja']?>')"><? echo date( "d-m-Y", strtotime( $row_caja['fecha'] ) );?></a></td>
-<td><? echo $row_caja['usuario_nombre'];?></td>
-<td>$ <? echo $row_caja['valor_medido'];?></td>
-<td>$ <? echo $row_caja['valor_real'];?></td>
-<td><? echo $row_caja['cant_estadia'];?></td>
-<?
+<td><a href="#" class="button" style="padding: 5px 5px 5px 5px;"  title="guardar" onClick="abrirVentana('vercaja.php?caja=<?php echo $row_caja['id_caja']?>')"><?php echo date( "d-m-Y", strtotime( $row_caja['fecha'] ) );?></a></td>
+<td><?php echo $row_caja['usuario_nombre'];?></td>
+<td>$ <?php echo $row_caja['valor_medido'];?></td>
+<td>$ <?php echo $row_caja['valor_real'];?></td>
+<td><?php echo $row_caja['cant_estadia'];?></td>
+<?php
 $total_medido=$total_medido+$row_caja['valor_medido'];
 $total_real=$total_real+$row_caja['valor_real'];
 $total_estadia=$total_estadia+$row_caja['cant_estadia'];
 ?>
 </tr>
-<? }while ($row_caja = mysql_fetch_array($caja)) ?>
+<?php }while ($row_caja = mysql_fetch_array($caja)) ?>
 
 <tr>
 <th colspan="2">Totales</th>
-<td>$ <? echo $total_medido;?></td>
-<td>$  <? echo $total_real;?></td>
-<td><? echo $total_estadia;?></td>
+<td>$ <?php echo $total_medido;?></td>
+<td>$  <?php echo $total_real;?></td>
+<td><?php echo $total_estadia;?></td>
 </tr>
 </table>

@@ -22,7 +22,7 @@ if(isset($_GET['fecha'])){
 	$total=0;
 }?>
 
-<? if(isset($_GET['cerrar'])){
+<?php if(isset($_GET['cerrar'])){
 	$fecha_americana=date( "Y-m-d",strtotime( $_GET['fecha'] ));
 	if($_GET['comentario']==""){
 
@@ -83,7 +83,8 @@ if(isset($_GET['fecha'])){
 </table>
 </form>
 
-<?if(isset($_GET['caja'])){
+<?php 
+if(isset($_GET['caja'])){
 if($numero_estadias==0){
 	echo "No se registran movimientos en la fecha ";
 	echo $fecha;
@@ -100,52 +101,54 @@ if($numero_estadias==0){
 	<th>Minutos</th>
 	<th>Valor</th>
 </tr>
-<?do{?>
+<?php
+do{?>
 <tr>
-	<td><?echo $row_estadia['usuario_nombre']?></td>
-	<td><?echo $row_estadia['codigo']?></td>
-	<td><?echo date("H:i:s", strtotime( $row_estadia['entrada']))?></td>
-	<td><?echo date("H:i:s", strtotime( $row_estadia['salida']))?></td>
-	<td><?echo $row_estadia['estado']?></td>
-	<td><?echo $row_estadia['tipo']?></td>
-	<td><?echo $row_estadia['min']?></td>
-	<td>$ <?echo $row_estadia['monto']?></td>
-	<?$total=$total+$row_estadia['monto']?>
+	<td><?php echo $row_estadia['usuario_nombre']?></td>
+	<td><?php echo $row_estadia['codigo']?></td>
+	<td><?php echo date("H:i:s", strtotime( $row_estadia['entrada']))?></td>
+	<td><?php echo date("H:i:s", strtotime( $row_estadia['salida']))?></td>
+	<td><?php echo $row_estadia['estado']?></td>
+	<td><?php echo $row_estadia['tipo']?></td>
+	<td><?php echo $row_estadia['min']?></td>
+	<td>$ <?php echo $row_estadia['monto']?></td>
+	<?php $total=$total+$row_estadia['monto']?>
 	
 </tr>
-<? }while ($row_estadia = mysql_fetch_array($estadia));?>
+<?php }while ($row_estadia = mysql_fetch_array($estadia));?>
 
 
 <tr>
 	<th colspan="2"><strong>Fecha</strong></th>
-	<td colspan="2"><? echo $fecha?></td>
+	<td colspan="2"><?php echo $fecha?></td>
 	<th colspan="2"><strong>Total</strong></th>
-	<td colspan="2">$ <?echo $total;?></td>
+	<td colspan="2">$ <?php echo $total;?></td>
 </tr>
 <tr>
 	<form action="caja.php" name="caja">
-	<th colspan="4" align="center"><center><a href="ver.php?fecha=<? echo $fecha;?>" target="main" class="button">Exportar</a></button></center></th>
+	<th colspan="4" align="center"><center><a href="ver.php?fecha=<?php echo $fecha;?>" target="main" class="button">Exportar</a></button></center></th>
 	<th colspan="4" align="center"><center><button type="submit" name="guardar" value="1">Cerrar Caja</button></center></th>
-	<input type="hidden" name="fecha" value="<? echo $fecha;?>">
-	<input type="hidden" name="valor_medido" value="<? echo $total;?>">
-	<input type="hidden" name="cantidad" value="<? echo $numero_estadias;?>">
+	<input type="hidden" name="fecha" value="<?php echo $fecha;?>">
+	<input type="hidden" name="valor_medido" value="<?php echo $total;?>">
+	<input type="hidden" name="cantidad" value="<?php echo $numero_estadias;?>">
 	</form>
 </tr>
 
 </table>
 
-<?}
+<?php
+}
 }?>
-<? if(isset($_GET['guardar'])){?>
+<?php if(isset($_GET['guardar'])){?>
 <form action="caja.php" name="caja2">
 <table id="tfhover" class="tftable">
 <tr>
 <td><label>Fecha</label></td>
-<td><input name="fecha" value="<?echo $_GET['fecha']?>" readonly disabled></td>
+<td><input name="fecha" value="<?php echo $_GET['fecha']?>" readonly disabled></td>
 </tr>
 <tr>
 <td><label>Valor Medido</label></td>
-<td><input name="valor_medido" value="<?echo $_GET['valor_medido']?>" readonly disabled></td>
+<td><input name="valor_medido" value="<?php echo $_GET['valor_medido']?>" readonly disabled></td>
 </tr>
 <tr>
 <td><label>Valor Real</label></td>
@@ -153,7 +156,7 @@ if($numero_estadias==0){
 </tr>
 <tr>
 <td><label>Cantidad de autos</label></td>
-<td><input name="cant_estadia" value="<?echo $_GET['cantidad']?>" readonly disabled></td>
+<td><input name="cant_estadia" value="<?php echo $_GET['cantidad']?>" readonly disabled></td>
 <tr>
 <tr>
 <td><label>Comentario</label></td>
@@ -164,15 +167,15 @@ if($numero_estadias==0){
 document.caja2.valor_real.focus();
 </script>
 <td><center><button name="cancelar" value="1">Cancelar</button></center></td>
-<td><center><button name="cerrar" onClick="abrirVentana('imprimircaja.php?fecha=<?echo $_GET['fecha']?>" value="1">Cerrar Caja</button></center></td>
+<td><center><button name="cerrar" onClick="abrirVentana('imprimircaja.php?fecha=<?php echo $_GET['fecha']?>" value="1">Cerrar Caja</button></center></td>
 <tr>
 </table>
 </form>
-<? } ?>
+<?php } ?>
 
 
-<? if(isset($_GET['cerrar'])){?>
+<?php if(isset($_GET['cerrar'])){?>
 La caja se ha guardado correctamente
-<? } ?>
+<?php } ?>
 
 	

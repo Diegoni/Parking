@@ -1,4 +1,4 @@
-<? 
+<?php 
 session_start();
 	if($_SESSION['id_tipousuario']!=1){
 	header("Location: index.php");
@@ -13,15 +13,15 @@ $row_tipo = mysql_fetch_assoc($tipo);
 <tr>
 <td>Tipo</td>
 <td><select name="tipo">
-	<?do{?>
-	<option value="<?echo $row_tipo['id_tipo'];?>"><?echo $row_tipo['tipo'];?></option>
-	<? }while ($row_tipo = mysql_fetch_array($tipo));?>
+	<?php do{?>
+	<option value="<?php echo $row_tipo['id_tipo'];?>"><?php echo $row_tipo['tipo'];?></option>
+	<?php }while ($row_tipo = mysql_fetch_array($tipo));?>
 	</select>
 </td>
 </tr>
 <tr>
 <td>Codigo</td>
-<td><input name="codigo" value="<? echo rand(0,99999999999);?>"></input></td>
+<td><input name="codigo" value="<?php echo rand(0,99999999999);?>"></input></td>
 </tr>
 <tr>
 <td></td>

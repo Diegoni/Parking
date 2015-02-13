@@ -35,14 +35,14 @@ include_once("head.php");
 
 ?>
 <body onload="window.print()">
-<?
+<?php
 if($numero_estadias==0){
 	echo "No se registran movimientos en la fecha ";
 	echo $fecha;
 }else{	
 ?>
-<? $fecha=date( "d-m-Y", strtotime( $row_caja['fecha'] ) );?>
-Fecha: <? echo $fecha?>
+<?php $fecha=date( "d-m-Y", strtotime( $row_caja['fecha'] ) );?>
+Fecha: <?php echo $fecha?>
 <table id="tfhover" class="tftable">
 <tr>
 	<th>Usuario-Salida</th>
@@ -54,32 +54,32 @@ Fecha: <? echo $fecha?>
 	<th>Minutos</th>
 	<th>Valor</th>
 </tr>
-<?do{?>
+<?php do{?>
 <tr>
-	<td><?echo $row_estadia['usuario_nombre']?></td>
-	<td><?echo $row_estadia['codigo']?></td>
-	<td><?echo date("H:i:s", strtotime( $row_estadia['entrada']))?></td>
-	<td><?echo date("H:i:s", strtotime( $row_estadia['salida']))?></td>
-	<td><?echo $row_estadia['estado']?></td>
-	<td><?echo $row_estadia['tipo']?></td>
-	<td><?echo $row_estadia['min']?></td>
-	<td>$ <?echo $row_estadia['monto']?></td>
-	<?$total=$total+$row_estadia['monto']?>
+	<td><?php echo $row_estadia['usuario_nombre']?></td>
+	<td><?php echo $row_estadia['codigo']?></td>
+	<td><?php echo date("H:i:s", strtotime( $row_estadia['entrada']))?></td>
+	<td><?php echo date("H:i:s", strtotime( $row_estadia['salida']))?></td>
+	<td><?php echo $row_estadia['estado']?></td>
+	<td><?php echo $row_estadia['tipo']?></td>
+	<td><?php echo $row_estadia['min']?></td>
+	<td>$ <?php echo $row_estadia['monto']?></td>
+	<?php $total=$total+$row_estadia['monto']?>
 	
 </tr>
-<? }while ($row_estadia = mysql_fetch_array($estadia));?>
+<?php }while ($row_estadia = mysql_fetch_array($estadia));?>
 
 
 <tr>
 	<th colspan="2"><strong>Real</strong></th>
-	<td colspan="2">$ <?echo $row_caja['valor_real'];?></td>
+	<td colspan="2">$ <?php echo $row_caja['valor_real'];?></td>
 	<th colspan="2"><strong>Medido</strong></th>
-	<td colspan="2">$ <?echo $total;?></td>.
+	<td colspan="2">$ <?php echo $total;?></td>.
 </tr>
 
 </table>
 
-<?}
+<?php }
 if($numero_cajas==1){
 echo "comentario: ";
 echo $row_caja['nota'];

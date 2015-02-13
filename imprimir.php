@@ -1,5 +1,5 @@
-
-<?include_once("config/database.php");?>
+<?php
+include_once("config/database.php");?>
 <style>
 .tarjeta{
 	border:1px solid;
@@ -9,7 +9,7 @@
 
 }
 </style>
-<?
+<?php
 $query="SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo) WHERE codigo='$_GET[codigo]'";   
 $tarjeta=mysql_query($query) or die(mysql_error());
 $row_tarjeta = mysql_fetch_assoc($tarjeta);
@@ -46,15 +46,15 @@ mysql_query("INSERT INTO tarjeta(
 <div class="tarjeta">
 <table>
 <tr>
-<td colspan="2"><center>Playa: <? echo $row_estacionamiento['estacionamiento']?></center></td>
+<td colspan="2"><center>Playa: <?php echo $row_estacionamiento['estacionamiento']?></center></td>
 </tr>
 
 <tr>
-<td colspan="2"><center><img src="barcode.php?code=<?echo $_GET['codigo'];?>&scale=2"></center></td>
+<td colspan="2"><center><img src="barcode.php?code=<?php echo $_GET['codigo'];?>&scale=2"></center></td>
 </tr>
 <tr>
 <td>Tipo :</td>
-<?
+<?php
 $tipo=mysql_query("SELECT * FROM `tipo` WHERE id_tipo='$_GET[tipo]'") or die(mysql_error());
 $row_tipo = mysql_fetch_assoc($tipo);
 ?>
@@ -62,10 +62,10 @@ $row_tipo = mysql_fetch_assoc($tipo);
 </tr>
 
 <tr>
-<td colspan="2"><center><strong><? echo $row_leyenda['primera']?></strong></center></td>
+<td colspan="2"><center><strong><?php echo $row_leyenda['primera']?></strong></center></td>
 </tr>
 <tr>
-<td colspan="2"><center><? echo $row_leyenda['costo']?></center></td>
+<td colspan="2"><center><?php echo $row_leyenda['costo']?></center></td>
 </tr>
 </table>
 </div>

@@ -1,6 +1,6 @@
-<? include_once("head.php");?>
+<?php include_once("head.php");?>
 <body onload="mueveReloj()">
-<?
+<?php
 //selecciono todas las empresas 
 $query="SELECT * FROM `estacionamiento` WHERE id_estado=1";   
 $estacionamiento=mysql_query($query) or die(mysql_error());
@@ -24,7 +24,7 @@ $row_aplicacion = mysql_fetch_assoc($aplicacion);
 	<header id="cabecera">
 		<div class="container">
 			<a id="logo" href="">
-			<? echo $row_aplicacion['nombre']?><span class="gris"><? echo $row_aplicacion['gris']?></span>
+			<?php echo $row_aplicacion['nombre']?><span class="gris"><?php echo $row_aplicacion['gris']?></span>
 			<p><span class="gris">TMS</span> Group</p></a>
 			<!--<a id="logo" href="">Park<span class="gris">ing</span> <p><span class="gris">TMS</span> Group</p></a>-->
 <!--------------------------------------------------------------------
@@ -35,13 +35,13 @@ $row_aplicacion = mysql_fetch_assoc($aplicacion);
 			<nav id="navigation">
                 <a href="index.php">Inicio</a>
                 <a href="caja.php">Cerrar Caja</a>			
-				<?
+				<?php
 				if($_SESSION['id_tipousuario']==1){
 				?>
 				<a href="cajas.php">Cajas</a>
                 <a href="config.php">Configuración</a>
 				<a href="codigos.php">Tarjetas</a>
-				<? } ?>
+				<?php } ?>
 				<?php 
     if(isset($_SESSION['usuario_nombre'])) { 
 	?> 
