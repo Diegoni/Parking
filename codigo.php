@@ -4,9 +4,9 @@ session_start();
 	header("Location: index.php");
 	}
 include_once("menu.php");
-$query="SELECT * FROM `tipo`";   
-$tipo=mysql_query($query) or die(mysql_error());
-$row_tipo = mysql_fetch_assoc($tipo);
+$query		= "SELECT * FROM `tipo`";   
+$tipo		= mysql_query($query) or die(mysql_error());
+$row_tipo	= mysql_fetch_assoc($tipo);
 ?>
 <table> 
 <form action="codigo.php">
@@ -34,7 +34,8 @@ $row_tipo = mysql_fetch_assoc($tipo);
 
 
 
-<?if(isset($_GET['generar'])){
+<?php 
+if(isset($_GET['generar'])){
 
 $query="SELECT * FROM `tarjeta` WHERE codigo='$_GET[codigo]'";   
 $tarjeta=mysql_query($query) or die(mysql_error());
@@ -54,7 +55,8 @@ if($numero_tarjetas>0){
 	<td colspan="2">Código de Barra </td>
 </tr>
 
-  <?if(strlen($_GET['codigo'])<13){ 
+  <?php
+  if(strlen($_GET['codigo'])<13){ 
 		$cantidad=strlen($_GET['codigo']);
 		$Cadena=$_GET['codigo'];
 		for ($cantidad; $cantidad < 13; $cantidad++) {
@@ -65,16 +67,16 @@ if($numero_tarjetas>0){
 	}
   ?>
 <tr>
-	<td colspan="2"><img src="barcode.php?code=<?echo $Cadena;?>&scale=2"></td>
+	<td colspan="2"><img src="barcode.php?code=<?php echo $Cadena;?>&scale=2"></td>
 </tr>
 <tr>
 <td>Tipo :</td>
-<?
+<?php
 $tipo=mysql_query("SELECT * FROM `tipo` WHERE id_tipo='$_GET[tipo]'") or die(mysql_error());
 $row_tipo = mysql_fetch_assoc($tipo);
 ?>
 
-<td><?echo $row_tipo['tipo'];?></td>
+<td><?php echo $row_tipo['tipo'];?></td>
 </tr>
 <tr>
 <!--<td><button type="submit" name="guardar" value="1">Guardar</button></td>-->
@@ -84,9 +86,10 @@ $row_tipo = mysql_fetch_assoc($tipo);
 </div>
 <br>
 <br>
-<td><a href="#" class="button"  title="guardar" onClick="abrirVentana('imprimir.php?codigo=<?echo $Cadena;?>&tipo=<?echo $_GET['tipo'];?>')">Imprimir</a></td>
+<td><a href="#" class="button"  title="guardar" onClick="abrirVentana('imprimir.php?codigo=<?php echo $Cadena;?>&tipo=<?php echo $_GET['tipo'];?>')">Imprimir</a></td>
 </form>
-<?}
+<?php 
+}
 }
 
 ?>
