@@ -9,7 +9,7 @@ include_once("menu.php");
 function intervalo_tiempo($init,$finish)
 {
     $diferencia = strtotime($finish) - strtotime($init);
-	$diferencia=round($diferencia/60);
+	$diferencia	= round($diferencia/60);
 	if($diferencia<0){
 		$diferencia="ERROR";
 	}
@@ -34,27 +34,27 @@ function periodos($minutos,$inicial,$extra_min,$tolerancia_min){
 if(isset($_GET['tarjeta'])){
 	
 	//Selecciona la tarjeta que se ingreso
-	$query="SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo) WHERE codigo='$_GET[tarjeta]'";   
-	$tarjeta=mysql_query($query) or die(mysql_error());
-	$row_tarjeta = mysql_fetch_assoc($tarjeta);
-	$numero_tarjetas = mysql_num_rows($tarjeta);
+	$query			= "SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo) WHERE codigo='$_GET[tarjeta]'";   
+	$tarjeta		= mysql_query($query) or die(mysql_error());
+	$row_tarjeta	= mysql_fetch_assoc($tarjeta);
+	$numero_tarjetas= mysql_num_rows($tarjeta);
 	
 	
 	//Si no encontro resultados, completa los 13 digitos de la tarjeta con 0 al comienzo y vuelve a buscar.
 	if($numero_tarjetas==0){
 		if(strlen($_GET['tarjeta'])<13){ 
-		$cantidad=strlen($_GET['tarjeta']);
-		$Cadena=$_GET['tarjeta'];
+		$cantidad	= strlen($_GET['tarjeta']);
+		$Cadena		= $_GET['tarjeta'];
 		for ($cantidad; $cantidad < 13; $cantidad++) {
-			$Cadena='0'.$Cadena;
+			$Cadena	= '0'.$Cadena;
 		}	
 	}else{
 		$Cadena=$_GET['tarjeta'];
 	}
-	$query="SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo) WHERE codigo='$Cadena'";   
-	$tarjeta=mysql_query($query) or die(mysql_error());
-	$row_tarjeta = mysql_fetch_assoc($tarjeta);
-	$numero_tarjetas = mysql_num_rows($tarjeta);
+	$query			= "SELECT * FROM `tarjeta` INNER JOIN tipo ON(tarjeta.id_tipo=tipo.id_tipo) WHERE codigo='$Cadena'";   
+	$tarjeta		= mysql_query($query) or die(mysql_error());
+	$row_tarjeta	= mysql_fetch_assoc($tarjeta);
+	$numero_tarjetas= mysql_num_rows($tarjeta);
 	}
 	
 	
@@ -65,10 +65,10 @@ if(isset($_GET['tarjeta'])){
 	
 	
 	//Buscamos estadias relacionados con la id de tarjeta	
-		$query="SELECT * FROM `estadia` WHERE id_tarjeta='$row_tarjeta[id_tarjeta]' AND id_estado=1";   
-		$estadia=mysql_query($query) or die(mysql_error());
-		$row_estadia = mysql_fetch_assoc($estadia);
-		$numero_estadias = mysql_num_rows($estadia);
+		$query			= "SELECT * FROM `estadia` WHERE id_tarjeta='$row_tarjeta[id_tarjeta]' AND id_estado=1";   
+		$estadia		= mysql_query($query) or die(mysql_error());
+		$row_estadia	= mysql_fetch_assoc($estadia);
+		$numero_estadias= mysql_num_rows($estadia);
 	
 	
 	//Si en la busqueda no encontro nada es porque no hay estadias abiertas, damos ingreso a la estadia
